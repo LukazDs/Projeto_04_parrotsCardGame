@@ -1,0 +1,27 @@
+body {
+    background-color: #EEF9BF;;
+}
+.initial-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-desktop {
+    width: 100%;
+    height: 100%;
+}
+.img-smartphone {
+    display: none;
+}
+@media (max-width: 335px) {
+    .img-desktop {
+        display: none;
+    }
+    .img-smartphone {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+}

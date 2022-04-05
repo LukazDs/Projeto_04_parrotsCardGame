@@ -1,0 +1,1 @@
+prompt("Qual o tipo de Jogo?")
