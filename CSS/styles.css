@@ -30,6 +30,8 @@ body > p {
     margin: 17px;
 
     background-color: #A7E9AF;
+    
+
     border: 1px solid #99CEA8;
     box-sizing: border-box;
     border-radius: 5px;
@@ -37,10 +39,19 @@ body > p {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
+
 }
-.carta > img {
+.carta > img, .carta-selecionada > img {
     width: 100px;
     height: 100px;
+}
+.carta-selecionada {
+    background-color: #ffffff; 
+}
+.restrita {
+    display: none;
 }
 @media(max-width: 767px) {
     body > p {
