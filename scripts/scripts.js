@@ -1,3 +1,29 @@
+let quantjogos = Number(prompt("Com quantas cartas você deseja jogar? (observação digitar um número par de cartas mior que 4 e menor do que 14!)"));
+const cartas = document.querySelector(".cartas")
+const imagens = [
+    "img0.gif",
+    "img1.gif",
+    "img2.gif",
+    "img3.gif",
+    "img4.gif",
+    "img5.gif",
+    "img6.gif",
+]
+
+let cartasColocada = "";
+
+for(let i = 0; i < quantjogos / 2; i++){
+    cartasColocada += `
+    <div class="carta">
+        <img class="face-levantada" src="images/img${i}.gif" />
+        <img class="face-abaixada" src="images/front.png" />
+    </div>
+    `
+};
+
+cartas.innerHTML = cartasColocada + cartasColocada;
+
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -14,7 +40,7 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
-function gerarCartas() {
+/* function gerarCartas() {
     const cartas = document.querySelector(".cartas");
    
     for(let i = 0; i < quantjogos; i ++) {
@@ -24,43 +50,16 @@ function gerarCartas() {
         </div>`
     }
 }
+ */
 
-function selecionarCarta(elemento) {
-    //let param = elemento.querySelector(".virada").src
-    console.log(enderecolista)
 
-    //if(enderecolista.length === 0) {
-    //    enderecolista.push(param)
-    //}
 
-    //if(enderecolista.indexOf(param) !== -1) {
-    //    console.log("true")
-    //    enderecolista.push(param)
-    //}
-    
-    const cartaescondida = document.querySelector(".carta-selecionada");
-    if(cartaescondida !== null) {
-        cartaescondida.classList.remove("carta-selecionada")
-        cartaescondida.querySelector(".imginicial").classList.remove("restrita")
-        cartaescondida.querySelector(".imgescondida").classList.add("restrita")
-    }
-
-    elemento.classList.add("carta-selecionada")
-    elemento.querySelector(".imginicial").classList.add("restrita")
-    elemento.querySelector(".imgescondida").classList.remove("restrita")
-    
-}
-
-function levantarCartas() {
-
-}
-
-let quantjogos = Number(prompt("Com quantas cartas você deseja jogar? (observação digitar um número par de cartas mior que 4 e menor do que 14!)"));
 
 checarJogos()
 
-let imglista = [0, 1, 2, 3, 4, 5, 6]
-imglista.sort(comparador)
-let enderecolista = []
+let imglista = [0, 1, 2, 3, 4, 5, 6];
+imglista.sort(comparador);
+let enderecolista = [];
+let listadepares = [];
+gerarCartas();
 
-gerarCartas()
