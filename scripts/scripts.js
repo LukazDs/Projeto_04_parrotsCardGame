@@ -45,7 +45,6 @@ function imprimirCartas() {
 checarJogos()
 imprimirCartas()
 
-
 /* análise de clique */
 const todasCartas = document.querySelectorAll(".carta")
 let primeiraCarta;
