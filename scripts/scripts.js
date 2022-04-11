@@ -1,4 +1,5 @@
-let quantjogos = Number(prompt("Com quantas cartas você deseja jogar? (observação digitar um número par de cartas mior que 4 e menor do que 14!)"));
+let quantjogos = Number(prompt("Com quantas cartas você deseja jogar? (Observação digitar um número par de cartas maior que 4 e menor do que 14!)"));
+checarJogos()
 const cartas = document.querySelector(".cartas")
 const listaImagens = [
     "img0.gif",
@@ -12,13 +13,13 @@ const listaImagens = [
 
 listaImagens.sort(comparador)
 
-let imagensUsadas = listaImagens.slice(0, quantjogos/2).sort(comparador)
-listaImagensUsada = imagensUsadas.concat(imagensUsadas).sort(comparador)
+const imagensUsadas = listaImagens.slice(0, quantjogos/2)
+const listaImagensUsada = imagensUsadas.concat(imagensUsadas).sort(comparador)
 console.log(listaImagensUsada)
 
 let cartasColocada = "";
 
-for(let i = 0; i < quantjogos / 2; i++){
+for(let i = 0; i < quantjogos; i++){
     cartasColocada += `
     <div class="carta" data-carta="${listaImagensUsada[i]}">
         <img class="face-levantada" src="images/${listaImagensUsada[i]}" />
@@ -27,14 +28,15 @@ for(let i = 0; i < quantjogos / 2; i++){
     `
 };
 
-cartas.innerHTML = cartasColocada + cartasColocada;
+cartas.innerHTML = cartasColocada;
     
 
 const todasCartas = document.querySelectorAll(".carta")
 let primeiraCarta;
 let segundaCarta;
 let cartaBloqueada = false;
-const listaPares = []
+const listaPares = [];
+let clique = 0;
 
 function rotacionarCarta() {
     if(cartaBloqueada) {
@@ -44,11 +46,13 @@ function rotacionarCarta() {
     //analizando se a primeira carta foi definida
     if(!primeiraCarta) {
         primeiraCarta = this;
+       
         return false;
     }
     segundaCarta = this;
 
     compararCartas()
+    clique += 1;
 }
 
 function compararCartas() {
@@ -59,8 +63,10 @@ function compararCartas() {
         console.log(listaPares)
     }
     
+    
     !cartasIguais ? desabilitarCartas() : resetarCartas(cartasIguais)
-
+    setTimeout(finalizarGame, 1000)
+    
 }
 
 function desabilitarCartas() {
@@ -87,11 +93,6 @@ function resetarCartas(cartasIguais = false) {
  */
 todasCartas.forEach(carta => carta.addEventListener("click", rotacionarCarta))
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
 function checarJogos() {
     while(quantjogos % 2 !== 0 || quantjogos < 4 || quantjogos > 14) {
         alert("Por favor, algo de errado não está certo!")
@@ -103,4 +104,9 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 
-checarJogos()
+function finalizarGame() {
+    if(listaPares.length === quantjogos / 2) {
+        alert(`Muleke tu é PIKA! Apenas ${clique} jogadas!`)
+    }
+}
+
