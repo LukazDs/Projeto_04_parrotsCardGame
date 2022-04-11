@@ -1,5 +1,5 @@
 body {
-    height: 100%;
+    height: 100vh;
     background-color: #EEF9BF;
     display: flex;
     flex-direction: column;
@@ -29,36 +29,32 @@ body > p {
     height: 146px;
     margin: 17px;
     cursor: pointer;
+    transform-style: preserve-3d;
+    transition: 0.3s;
     position: relative;
 }
 .carta:active {
     transform: scale(0.97);
 }
 /* ativar no js, não esqueça*/
-.carta.virada{
+.carta.virada {
     transform: rotateY(180deg);
 }
-.carta > img, .carta-selecionada > img {
+.face-levantada, .face-abaixada {
     width: 100%;
     height: 100%;
+    backface-visibility: hidden;
     padding: 17px;
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     box-sizing: border-box;
     border-radius: 5px;
     position: absolute;
+    
 }
-/* ativar */
-.carta-selecionada {
-    background-color: #ffffff; 
+.face-levantada {
+    transform: rotateY(180deg);
+    
 }
-.restrita {
-    display: none;
-}
-@media(max-width: 767px) {
-    body > p {
-        font-size: 36px;
-        line-height: 42px;
-        text-align: center;
-    }
-}
+
+
