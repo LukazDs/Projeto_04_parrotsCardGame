@@ -124,7 +124,7 @@ function resetarGame() {
     } else {
         cartas.innerHTML = `
         <p class='creditos'>Autor: LukazDs</p>
-        <img src=./images/passarinho.gif />`
+        <img src="./images/passarinho.gif" />`
         
         relogio.classList.add("relogio-block")
     }
