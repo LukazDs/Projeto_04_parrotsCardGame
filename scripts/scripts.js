@@ -34,8 +34,8 @@ function imprimirCartas() {
     for(let i = 0; i < quantjogos; i++){
         cartasColocada += `
         <div class="carta" data-carta="${lista[i]}">
-            <img class="face-levantada" src="images/${lista[i]}" />
-            <img class="face-abaixada" src="images/front.png" />
+            <img class="face-levantada" src="./images/${lista[i]}" />
+            <img class="face-abaixada" src="./images/front.png" />
         </div>
         `
     }
@@ -124,7 +124,7 @@ function resetarGame() {
     } else {
         cartas.innerHTML = `
         <p class='creditos'>Autor: LukazDs</p>
-        <img src=images/passarinho.gif />`
+        <img src=./images/passarinho.gif />`
         
         relogio.classList.add("relogio-block")
     }
